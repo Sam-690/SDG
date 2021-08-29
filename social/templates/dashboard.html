@@ -1,0 +1,108 @@
+{% extends 'base.html' %} {% block contenido %} {% load crispy_forms_tags %}
+
+<div class="home-content">
+    <div class="overview-boxes">
+        <div class="box">
+            <div class="right-side">
+                <div class="box-topic">Internos</div>
+                <div class="number">{{internos_count}}</div>
+            </div>
+            <i class='bx bx-user cart two'></i>
+        </div>
+        <div class="box">
+            <div class="right-side">
+                <div class="box-topic">Doulas</div>
+                <div class="number">38</div>
+            </div>
+            <i class='bx bx-user cart four'></i>
+        </div>
+        <div class="box">
+            <div class="right-side">
+                <div class="box-topic">Doulos</div>
+                <div class="number">370</div>
+            </div>
+            <i class='bx bxs-user cart'></i>
+        </div>
+    </div>
+</div>
+
+<iframe  width="500" scrolling="no" height="300" frameborder="0" src="https://www.bibliatodo.com/es/online/versiculo-del-dia-texto"></iframe>
+
+<div class="table-container">
+  <div class="inner">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Lunes</th>
+          <th>Martes</th>
+          <th>Miercoles</th>
+          <th>Jueves</th>
+          <th>Viernes</th>
+          <th>Sabado</th>
+          <th>Domingo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>10:00 - 10:50</td>
+          <td>Info</td>
+          <td>Info</td>
+          <td>Info</td>
+          <td>Info</td>
+        </tr>
+        <tr>
+          <td>11:00 - 11:50</td>
+          <td>Info</td>
+          <td>Info</td>
+          <td>Info</td>
+          <td>Info</td>
+        </tr>
+        <tr>
+          <td>12:00 - 12:50</td>
+          <td>Info</td>
+          <td>Info</td>
+          <td>Info</td>
+          <td>Info</td>
+        </tr>
+        <tr>
+          <td>13:00 - 16:00</td>
+          <td>Aseo Personal y Comida</td>
+          <td>Aseo Personal y Comida</td>
+          <td>Aseo Personal y Comida</td>
+          <td>Aseo Personal y Comida</td>
+          <td>Aseo Personal y Comida</td>
+          <td>Aseo Personal y Comida</td>
+          <td>Aseo Personal y Comida</td>
+        </tr>
+        <tr>
+          <td>16:00 - 16:50</td>
+          <td>Info</td>
+          <td>Info</td>
+          <td>Info</td>
+          <td>Info</td>
+        </tr>
+        <tr>
+          <td>17:00 - 17:50</td>
+          <td>Info</td>
+          <td>Info</td>
+          <td>Info</td>
+          <td>Info</td>
+        </tr>
+        <tr>
+          <td>18:00 - 18:50</td>
+          <td>Info</td>
+          <td>Info</td>
+          <td>Info</td>
+          <td>Info</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="table__caption">
+    <h2 class="table__header">Horario de Enseñanzas</h2>
+    <p class="table__header--sub">Patio Principal</p>
+  </div>
+</div>
+</section>
+{% endblock %}

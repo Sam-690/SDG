@@ -1,0 +1,83 @@
+{% extends 'base.html' %} {% block contenido %} {% load crispy_forms_tags %} {% block js %}
+<script>
+    function eliminar_interno(id) {
+        Swal.fire({
+                title: 'Esta seguro?',
+                text: "Esta accion no se puede revertir!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, Eliminarlo!',
+                cancelButtonText: 'Cancelar'
+            })
+            .then(function(result) {
+                if (result.isConfirmed) {
+                    window.location.href = "/eliminar_interno/"
+                }
+            })
+    }
+</script>
+{% endblock %}
+<div class="home-content title">
+  <div class="overview-boxes">
+    <div class="box">
+      <div class="right-side">
+        <div class="box-topic"><h2>Internos Recientes</h2></div>
+         <a href={% url 'formularioR'%} class="btn btn-primary createI">Registrar Nuevo Interno</a>
+      </div>
+    </div>
+  </div>
+<div class="sales-boxes">
+
+</div>
+
+  <div class="sales-boxes">
+      <div class="container p-30">
+        <div class="row">
+            <div class="col-md-12 main-datatable">
+                <div class="card_body">
+                    <div class="overflow-x">
+                        <table style="width:100%;" id="filtertable" class="table cust-datatable dataTable no-footer">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Apellidos</th>
+                                    <th>Adiccion</th>
+                                    <th>edad</th>
+                                    <th>Fecha de Ingreso</th>
+                                    <th>Responsable</th>
+                                    {% if user.is_superuser %}
+                                    <th>Opciones</th>
+                                    {% endif %}
+                                    <th>Detalles</th>
+                                 </tr>
+                            </thead>
+                            {% for i in internos %}
+                                <tr>
+                                    <td>{{ i.nombre }}</td>
+                                    <td>{{ i.apellidos }}</td>
+                                    <td>{{ i.adicciones }}</td>
+                                    <td>{{ i.edad }}</td>
+                                    <td>{{ i.created_at }}</td>
+                                    <td>{{ i.responsableInterno }}</td>
+                                    {% if user.is_superuser %}
+                                    <td>
+                                        <a href="{% url 'modificar_interno' i.id %}" class="btn btn-info btn-sm">Editar</a>
+                                        <a href="{% url 'eliminar_interno' i.id %}" onclick="eliminar_interno" class="btn btn-danger btn-sm">Eliminar</a>
+                                    </td>
+                                    {% endif %}
+                                    <td><a href="{% url 'detallesInterno' i.id %}">view</a></td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+</div>
+</section>
+{% endblock %}

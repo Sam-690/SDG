@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block contenido %} {% load crispy_forms_tags %}
+<div class="home-content">
+    <div class="overview-boxes">
+        <div class="box">
+            <div class="right-side">
+                <div class="box-topic" style="text-align:center"><h2>Contabilidad</h2></div>
+                <br>
+                <a href={% url 'RegistroApoyo'%} class="btn btn-primary createI"> Registrar Nuevo Apoyo de
+                    Interno</a>
+            </div>
+        </div>
+  </div>
+
+  <div class="sales-boxes">
+      <div class="container p-30">
+        <div class="row">
+            <div class="col-md-12 main-datatable">
+                <div class="card_body">
+                    <div class="overflow-x">
+                        <table style="width:100%;" id="filtertable" class="table cust-datatable dataTable no-footer">
+                            <thead>
+                                <tr>
+                                    <th style="min-width:50px;">Responsable del Interno</th>
+                                    <th style="min-width:150px;">Interno</th>
+                                    <th style="min-width:150px;">Detalles</th>
+                            </thead>
+                            <tbody>
+                                {% for a in titulares %}
+                                <tr>
+                                    <td>{{a.responsable_interno}}</td>
+                                    <td>{{a.interno}}</td>
+                                    <td><a href="{% url 'detallesApoyo' a.id %}">view</a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+</div>
+      
+</section>
+{% endblock %}

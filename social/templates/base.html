@@ -1,0 +1,133 @@
+    {% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Gestion | Casa Doulos </title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/internos.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/formularioR.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/formularioI.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/agenda.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/caja.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/task.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/calendario.css'%}" type="text/css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.14/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="static/projectname/favicon.ico">
+    <!-- Boxicons CDN Link -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class='bx bxl-gitlab'></i>
+            <span class="logo_name">Casa Doulos</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href={% url 'home' %} >
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href={% url 'agenda' %}>
+                    <i class='bx bx-task-x'></i>
+                    <span class="links_name">Agenda</span>
+                </a>
+            </li>
+            <!-- <li>
+                <a href="#">
+                    <i class='bx bx-message'></i>
+                    <span class="links_name">Mensajes</span>
+                </a>
+            </li> -->
+            <li>
+                <a href={% url 'internos' %}>
+                    <i class='bx bx-user-circle'></i>
+                    <span class="links_name">Internos</span>
+                </a>
+            </li>
+            <li>
+                <a href={% url 'contabilidad'%}>
+                    <i class='bx bxs-barcode'></i>
+                    <span class="links_name">Contabilidad</span>
+                </a>
+            </li>
+            <li>
+                <a href={% url 'caja' %}>
+                    <i class='bx bx-dollar-circle'></i>
+                    <span class="links_name">Caja</span>
+                </a>
+            </li>
+            <li>
+                <a href={% url 'inventario' %}>
+                    <i class='bx bx-package'></i>
+                    <span class="links_name">Inventario</span>
+                </a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="log_out">
+                <a href="{% url 'logout'%}">
+                    <i class='bx bx-log-out'></i>
+                    <span class="links_name">Log out</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+    <section class="home-section">
+        <nav>
+            <div class="sidebar-button">
+                <i class='bx bx-menu sidebarBtn'></i>
+                <span class="dashboard">Dashboard</span>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Search...">
+                <i class='bx bx-search'></i>
+            </div>
+            <div class="profile-details">
+                <img src={% static 'img/doulos.jpeg' %} alt="">
+                <span class="admin_name">{{ user.username }}</span>
+            </div>
+        </nav>
+        {% block contenido %} {% endblock %}
+
+        <script>
+            let sidebar = document.querySelector(".sidebar");
+            let sidebarBtn = document.querySelector(".sidebarBtn");
+            sidebarBtn.onclick = function() {
+                sidebar.classList.toggle("active");
+                if (sidebar.classList.contains("active")) {
+                    sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+                } else
+                    sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+            }
+        </script>
+
+
+        <script src="{% static 'js/calendario.js'%}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.10.14/js/jquery.dataTables.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        {% if messages %} {% for m in messages %}
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Felicidades',
+                text: '{{m}}',
+            })
+        </script>
+        {% endfor %} {% endif %}
+
+</body>
+
+</html>

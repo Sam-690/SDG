@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block contenido %} {% load crispy_forms_tags %}
+<div class="home-content title">
+  <h2>Hola desde contabilidad</h2>
+</div>
+
+<div class="overview-boxes">
+  <form
+    action=""
+    class="formulario"
+    enctype="multipart/form-data"
+    method="POST"
+  >
+    {% csrf_token %} {{ form | crispy }} {{mensaje}}
+    <div class="boton">
+      <button class="btn btn-primary" type="submit" id="btnEnviar">
+        Enviar
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock %}

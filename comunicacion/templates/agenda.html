@@ -1,0 +1,78 @@
+{% extends 'base.html' %} {% block contenido %} {% load crispy_forms_tags %}
+<div class="home-content title">
+  <div class="overview-boxes">
+    <div class="box">
+      <div class="right-side">
+        <div class="box-topic">Agenda</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="center">
+  <button id="show-login">Nueva Entrada</button>
+</div>
+<div class="popup">
+  <div class="close-btn">&times;</div>
+  <form action="" method="post" enctype="multipart/form">
+    <div class="form">
+    <h2>Nueva Entrada</h2>
+      <div class="form-element">
+        {% csrf_token %} {{ form | crispy }} {{mensaje}}
+        <button class="btn" type="submit" id="btnEnviar">Crear Entrada</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div class="task_list">
+  <div class="list_info">
+    <ul class="ul_list">
+    {% for t in tasks %}
+      <li class="list" style="list-style-type: none;">
+        <h3>{{t.title}}</h3>
+        <br>
+        <span>{{t.created_at}} | creado por {{ request.user.first_name }} {{user.last_name}}</span>
+        <p>{{t.description}}</p>
+      </li>
+    {% endfor %}
+    </ul>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+  
+      {% if tasks.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page=1">&laquo First</a></li>
+      <li class="page-item"><a class="page-link" href="?page={{ tasks.previous_page_number }}">Previous</a></li>
+      {% endif %}
+
+      <li class="page-item">
+        <a href="" class="page-link">
+          Page {{ tasks.number }} of {{ tasks.paginator.num_pages }}
+        </a>
+      </li> 
+      {% if tasks.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ tasks.next_page_number }}">Next</a></li>
+      <li class="page-item"><a class="page-link" href="?page={{ tasks.paginator.num_pages }}">Last &raquo</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+  </div>
+</div>
+
+</section>
+
+  <script>
+    document
+      .querySelector("#show-login")
+      .addEventListener("click", function () {
+        document.querySelector(".popup").classList.add("active");
+      });
+    document
+      .querySelector(".popup .close-btn")
+      .addEventListener("click", function () {
+        document.querySelector(".popup").classList.remove("active");
+      });
+  </script>
+{% endblock %}

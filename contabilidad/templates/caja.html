@@ -1,0 +1,56 @@
+{% extends 'base.html' %} {% block contenido %} {% load crispy_forms_tags %}
+<div class="home-content">
+    <div class="overview-boxes">
+        <div class="box">
+            <div class="right-side">
+                <div class="box-topic" style="text-align:center"><h2>Caja</h2></div>
+                <br>
+                <a href={% url 'cajaF' %}  class="btn btn-primary createI">Nueva Entrada</a>
+            </div>
+        </div>
+    </div>
+
+  <div class="sales-boxes">
+    <div class="container p-30">
+      <div class="row">
+        <div class="col-md-12 main-datatable">
+          <div class="card_body">
+            <div class="row d-flex">
+            </div>
+            <div class="overflow-x">
+              <table
+              style="width: 100%"
+              id="filtertable"
+              class="table cust-datatable dataTable no-footer"
+            >
+                <thead>
+                  <tr>
+                    <th style="min-width: 50px">Tipo</th>
+                    <th style="min-width: 150px">Descripcion</th>
+                    <th style="min-width: 150px">Cantidad</th>
+                    <th style="min-width: 100px">Fecha</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for c in caja %}
+                  <tr>
+                    <td>{{c.tipo_caja}}</td>
+                    <td>{{ c.descripcion }}</td>
+                    <td>${{ c.cantidad }}.00</td>
+                    <td>{{ c.fecha }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+</div>
+</section>
+{% endblock %}

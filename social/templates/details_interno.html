@@ -1,0 +1,188 @@
+{% extends 'base.html' %} {% block contenido %}
+<div class="home-content title">
+  <div class="overview-boxes">
+    <div class="box">
+      <div class="right-side">
+        <div class="box-topic"><h2>Detalles de Registro</h2></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="interno-perfil py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 info-interno">
+          <div class="card shadow-sm">
+            <div class="card-header bg-transparent text-center">
+              <h3>{{detallesInterno.nombre}} {{detallesInterno.apellidos}}</h3>
+            </div>
+            <div class="card-body">
+              <p class="mb-0">
+                <strong class="pr-1">Interno ID:</strong> {{detallesInterno.id}}
+              </p>
+              <p class="mb-0"><strong class="pr-1">Sexo:</strong> Masculino</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="card shadow-sm">
+            <div class="card-header bg-transparent border-0">
+              <h3 class="mb-0">
+                <i class="bx bxs-user-account"></i> Informacion General
+              </h3>
+            </div>
+            <div class="card-body pt-0">
+              <table class="table table-bordered">
+                <tr>
+                  <th width="30%">Fecha de Nacimiento</th>
+                  <td width="2%">:</td>
+                  <td>{{detallesInterno.fecha_nacimiento}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Lugar de Nacimiento</th>
+                  <td width="2%">:</td>
+                  <td>{{detallesInterno.lugar_nacimiento}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Edad</th>
+                  <td width="2%">:</td>
+                  <td>{{detallesInterno.edad}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Estado Civil</th>
+                  <td width="2%">:</td>
+                  <td>{{detallesInterno.estado_civil}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Adiccion</th>
+                  <td width="2%">:</td>
+                  <td>{{detallesInterno.adicciones}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Tiempo de Adiccion</th>
+                  <td width="2%">:</td>
+                  <td>{{detallesInterno.tiempo_adiccion}} años</td>
+                </tr>
+                <tr>
+                  <th width="30%">Dirección</th>
+                  <td width="2%">:</td>
+                  <td>{{detallesInterno.direccion}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Enfermedades</th>
+                  <td width="2%">:</td>
+                  <td>{{detallesInterno.enfermedades}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Tratamiento</th>
+                  <td width="2%">:</td>
+                  <td>{{detallesInterno.tratamiento}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Fecha de Ingreso</th>
+                  <td width="2%">:</td>
+                  <td>{{detallesInterno.created_at}}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div style="height: 26px"></div>
+
+          <div class="card shadow-sm">
+            <div class="card-header bg-transparent border-0">
+              <h3 class="mb-0">
+                <i class="bx bxs-user-account"></i> Informacion Responsable
+              </h3>
+            </div>
+            <div class="card-body pt-0">
+              <table class="table table-bordered">
+                <tr>
+                  <th width="30%">Nombre del Responsable</th>
+                  <td width="2%">:</td>
+                  <td>
+                    {{detallesResponsable.nombre}}
+                    {{detallesResponsable.apellidos}}
+                  </td>
+                </tr>
+                <tr>
+                  <th width="30%">Edad</th>
+                  <td width="2%">:</td>
+                  <td>{{detallesResponsable.edad}} años</td>
+                </tr>
+                <tr>
+                  <th width="30%">Parentesco</th>
+                  <td width="2%">:</td>
+                  <td>{{detallesResponsable.parentesco}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Dirección</th>
+                  <td width="2%">:</td>
+                  <td>{{detallesResponsable.direccion}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Telefono</th>
+                  <td width="2%">:</td>
+                  <td>{{detallesResponsable.telefono}}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div style="height: 26px"></div>
+
+          <div class="card shadow-sm">
+            <div class="card-header bg-transparent border-0">
+              <h3 class="mb-0">
+                <i class="bx bxs-user-account"></i> Informacion Familia
+              </h3>
+            </div>
+            <div class="card-body pt-0">
+              <table class="table table-bordered">
+                <tr>
+                  <th width="30%">Padre</th>
+                  <td width="2%">:</td>
+                  <td>{{detallesFamilia.padre}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Madre</th>
+                  <td width="2%">:</td>
+                  <td>{{detallesFamilia.madre}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Conyuge</th>
+                  <td width="2%">:</td>
+                  <td>{{detallesFamilia.conyuge}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Hij@</th>
+                  <td width="2%">:</td>
+                  <td>{{detallesFamilia.hijo1}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Hij@</th>
+                  <td width="2%">:</td>
+                  <td>{{detallesFamilia.hijo2}}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div style="height: 26px"></div>
+
+          <div class="card shadow-sm">
+            <div class="card-header bg-transparent border-0">
+              <h3 class="mb-0">
+                <i class="bx bxs-message-minus"></i> Observaciónes
+              </h3>
+            </div>
+            <div class="card-body pt-0">
+              <p>{{detallesInterno.observaciones}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+</div>

@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block contenido %} {% load crispy_forms_tags %}
+<div class="home-content">
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3">
+            <div class="card">
+                <dic class="card-body">
+                    <h2>Editar Interno</h2>
+                    <hr>
+                    <form action="" class="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %} {{ form | crispy}}
+                        <div class="boton">
+                            <input type="reset" value="cancelar" class="btn btn-secondary"> &nbsp;
+                            <button type="submit" id="btnEnviar" class="btn btn-primary">Editar</button> {{mensaje}}
+                        </div>
+                    </form>
+                </dic>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+{% endblock %}

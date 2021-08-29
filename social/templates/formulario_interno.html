@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block contenido %} {% load crispy_forms_tags %}
+<div class="home-content">
+    <h2>Registro de Nuevo Interno</h2>
+    <div class="overview-boxes">
+        <form action="" class="formulario" enctype="multipart/form-data" method="POST">
+            {% csrf_token %} {{ form | crispy }} {{ mensaje }}
+            <div class="boton">
+                <button type="reset" value="Cancelar" class="btn btn-danger">Reset</button> &nbsp;
+                <button class="btn btn-primary" type="submit" id="btnEnviar">Enviar</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

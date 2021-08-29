@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block contenido %}
+<div class="home-content">
+  <div class="overview-boxes">
+    <div class="box">
+      <div class="right-side">
+        <div class="box-topic" style="text-align: center">
+          <h2>Inventario</h2>
+        </div>
+        <br />
+        <a href={% url 'inventarioForm' %} class="btn btn-primary">Entrada</a>
+      </div>
+    </div>
+  </div>
+  <div class="sales-boxes">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for i in InventarioR %}
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><strong>Entrega:</strong> {{i.nombre_entrega}}</h5>
+            <h5 class="card-title"><strong>Recibio:</strong> {{i.nombre_recibe}}</h5>
+            <h5 class="card-title"><strong>Interno:</strong> {{i.nombre_interno}}</h5>
+            <p class="card-text"><strong>Inventario:</strong> {{i.cosas_entregadas}}</p>
+          </div>
+        </div>
+      </div>
+  {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
